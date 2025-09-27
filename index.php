@@ -2,11 +2,20 @@
 
 declare(strict_types=1);
 
-// test database
-$databaseUri = getenv('DB_POSTGRES_URI');
-$conn = pg_connect($databaseUri);
+include 'db.php';
 
-$msg = $conn? "database connection OK" : "Error de conexión a PostgreSQL";
+// vvv test database vvv
+$result = pg_query($conn, "SELECT id, nombre FROM usuarios");
+if (!$result) {
+    echo "Error en la consulta.";
+    exit;
+}
 
-echo "<h1>¡Hola tío, esto es Northflank con PHP!</h1>";
-echo "<h2>$msg</h2>";
+echo "<ul>";
+while ($row = pg_fetch_assoc($result)) {
+    echo "<li>ID: " . $row['id'] . " - Nombre: " . $row['nombre'] . "</li>";
+}
+echo "</ul>";
+// ^^^ test database ^^^
+
+pg_close($conn);
