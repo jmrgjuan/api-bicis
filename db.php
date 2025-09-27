@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-$conn = pg_connect($conn_string);
+$databaseUri = getenv('DB_POSTGRES_URI');
+$conn = pg_connect($databaseUri);
 
 if (!$conn) {
     die("Error de conexión a PostgreSQL");
