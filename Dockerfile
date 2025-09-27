@@ -1,15 +1,15 @@
-# Usa una imagen oficial de PHP con Apache
 FROM php:8.2-apache
 
-# Copia el contenido del repositorio al directorio raíz del servidor web
+# Instala la extensión pgsql para PostgreSQL
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pgsql
+
+# Copia el código fuente
 COPY . /var/www/html/
 
-# Da permisos adecuados
+# Permisos y configuración
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+    && chmod -R 755 /var/www/html \
+    && a2enmod rewrite
 
-# Habilita el módulo de reescritura de Apache (útil para frameworks como Laravel)
-RUN a2enmod rewrite
-
-# Expone el puerto 80 (Apache)
 EXPOSE 80
