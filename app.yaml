@@ -12,4 +12,4 @@ services:
       deploy_on_push: true
       repo: jmrgjuan/api-bicis
     routes:
-	    - path: /
+      - path: /
