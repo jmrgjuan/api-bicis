@@ -1,0 +1,15 @@
+name: api-bicis-app
+region: fra1
+services:
+  - name: api-bicis
+    environment_slug: php
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: s-1vcpu-1gb
+    source_dir: /
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: jmrgjuan/api-bicis
+    routes:
+	    - path: /

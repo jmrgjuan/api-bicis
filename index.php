@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+\print("Hello, World!");
+
+/*
 include 'db.php';
 
 // vvv test database vvv
@@ -19,3 +22,4 @@ echo "</ul>";
 // ^^^ test database ^^^
 
 pg_close($conn);
+*/
