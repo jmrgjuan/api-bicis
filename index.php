@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-\print("Hello, World!");
+echo "Hello, World!";
 
 /*
 include 'db.php';
